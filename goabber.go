@@ -1,4 +1,4 @@
-package abber
+package goabber
 
 import (
 	"fmt"
@@ -24,12 +24,12 @@ func _isAbber(input_abber string, target string, returnvalue bool) bool {
 		fmt.Println("Matched : " + string(input_abber[0]))
 		input_abber = input_abber[1:]
 		target = target[1:]
-		returnvalue = isAbber(input_abber, target, returnvalue)
+		returnvalue = _isAbber(input_abber, target, returnvalue)
 
 	} else {
 		fmt.Println("skipping : " + string(target[0]))
 		target = target[1:]
-		returnvalue = isAbber(input_abber, target, returnvalue)
+		returnvalue = _isAbber(input_abber, target, returnvalue)
 	}
 	fmt.Println(returnvalue)
 	return returnvalue
