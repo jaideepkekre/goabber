@@ -1,3 +1,6 @@
+//Jaideep Kekre
+//Checks if word is valid abbreviation of target word
+
 package goabber
 
 import (
@@ -5,31 +8,32 @@ import (
 	"unicode/utf8"
 )
 
-func abber(input_abber string, target string) bool {
+//Abber  is called with the abbereviation to check, the word to check that is a abbeviation of.
+func Abber(inputAbber string, target string) bool {
 
-	return _isAbber(input_abber, target, false)
+	return isAbber(inputAbber, target, false)
 
 }
 
-func _isAbber(input_abber string, target string, returnvalue bool) bool {
+func isAbber(inputAbber string, target string, returnvalue bool) bool {
 
-	fmt.Println("abber: ", utf8.RuneCountInString(input_abber))
+	fmt.Println("abber: ", utf8.RuneCountInString(inputAbber))
 	fmt.Println("target:" + target)
-	if utf8.RuneCountInString(input_abber) == 0 || returnvalue == true {
+	if utf8.RuneCountInString(inputAbber) == 0 || returnvalue == true {
 		returnvalue = true
 
-	} else if utf8.RuneCountInString(input_abber) > 0 && utf8.RuneCountInString(target) == 0 {
+	} else if utf8.RuneCountInString(inputAbber) > 0 && utf8.RuneCountInString(target) == 0 {
 		returnvalue = false
-	} else if input_abber[0] == target[0] {
-		fmt.Println("Matched : " + string(input_abber[0]))
-		input_abber = input_abber[1:]
+	} else if inputAbber[0] == target[0] {
+		fmt.Println("Matched : " + string(inputAbber[0]))
+		inputAbber = inputAbber[1:]
 		target = target[1:]
-		returnvalue = _isAbber(input_abber, target, returnvalue)
+		returnvalue = isAbber(inputAbber, target, returnvalue)
 
 	} else {
 		fmt.Println("skipping : " + string(target[0]))
 		target = target[1:]
-		returnvalue = _isAbber(input_abber, target, returnvalue)
+		returnvalue = isAbber(inputAbber, target, returnvalue)
 	}
 	fmt.Println(returnvalue)
 	return returnvalue
